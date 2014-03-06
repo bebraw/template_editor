@@ -1,6 +1,6 @@
 <header class="tools">
     <div class="controls type-controls pull-left">
-        <select class="type" ng-model="selectedType" ng-options="type for type in types"></select>
+        <select class="type" ng-model="selected.type" ng-options="type for type in types"></select>
 
         <div class="data">
             <label>Data</label>
@@ -9,7 +9,7 @@
     </div>
 
     <div class="controls property-controls pull-left">
-        <div class="animate-switch-container" ng-switch on="selectedType">
+        <div class="animate-switch-container" ng-switch on="selected.type">
             <div class="animate-switch" ng-switch-when="text">
                 <select class="type" ng-model="selectedFont" ng-options="font for font in fonts"></select>
 
@@ -44,36 +44,38 @@
     </div>
 
     <div class="controls general-controls pull-right">
-        <button class="control">Remove</button>
-        <button class="control">Add New</button>
+        <button class="control" ng-click="remove()">Remove</button>
+        <button class="control" ng-click="addNew()">Add New</button>
     </div>
 
     <div class="controls dimension-controls pull-right">
         <div class="dimension">
             <label>X</label>
-            <input name="x" />
+            <input name="x" ng-model="selected.x" />
         </div>
 
         <div class="dimension">
             <label>Y</label>
-            <input name="y" />
+            <input name="y" ng-model="selected.y" />
         </div>
 
         <div class="dimension">
             <label>Z</label>
-            <input name="z" />
+            <input name="z" ng-model="selected.z" />
         </div>
 
         <div class="dimension">
             <label>W</label>
-            <input name="w" />
+            <input name="w" ng-model="selected.w" />
         </div>
 
         <div class="dimension">
             <label>H</label>
-            <input name="h" />
+            <input name="h" ng-model="selected.h" />
         </div>
     </div>
 </header>
 
-<div id="workspace"></div>
+<div id="workspace">
+    <div class="element" ng-repeat="element in elements" ng-class="{selected: element.selected}" ng-style="{left: element.x * 100 + '%', top: element.x * 100 + '%', width: element.w * 100 + '%', height: element.h * 100 + '%', 'z-index': element.z}">{{ element.type }}</div>
+</div>

@@ -25,3 +25,11 @@
 
     margin-bottom: 0.5em;
 }
+
+.element {
+    position: relative;
+}
+
+.selected.element {
+    border: 0.1em dashed #555;
+}
