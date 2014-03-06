@@ -78,7 +78,7 @@
 
 <div id="workspace">
     <div class="layer" ng-repeat="element in elements" ng-switch on="element.type">
-        <div draggable class="element" ng-class="{selected: element.selected}" ng-style="{left: element.x * 100 + '%', top: element.y * 100 + '%', width: element.w * 100 + '%', height: element.h * 100 + '%', 'z-index': element.z}" ng-class="{selected: element.selected}">
+        <div draggable class="element" ng-class="{selected: element.selected}" ng-style="{left: element.x * 100 + '%', top: element.y * 100 + '%', width: element.w * 100 + '%', height: element.h * 100 + '%', 'z-index': element.z}" ng-class="{selected: element.selected}" ng-click="select(element)">
             <div ng-switch-when="text" ng-style="{'font-family': element.font, 'font-size': element.size, 'text-transform': element.uppercase? 'uppercase': 'none', 'text-shadow': element.shadow? '0.1em 0.1em #333': 'none'}">
                 {{ element.type }}
             </div>

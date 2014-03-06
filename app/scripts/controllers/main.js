@@ -15,8 +15,12 @@ angular.module('templateEditorApp').controller('MainCtrl', function($scope) {
 
     $scope.addNew = addNew;
     $scope.remove = remove;
+    $scope.select = select;
+    $scope.getNumber = getNumber;
 
-    $scope.getNumber = function(num) {
+    initializeWorkspace();
+
+    function getNumber(num) {
         num = parseInt(num, 10);
 
         if(num) {
@@ -24,9 +28,7 @@ angular.module('templateEditorApp').controller('MainCtrl', function($scope) {
         }
 
         return [];
-    };
-
-    initializeWorkspace();
+    }
 
     function addNew() {
         var element = {
@@ -64,6 +66,10 @@ angular.module('templateEditorApp').controller('MainCtrl', function($scope) {
     }
 
     function select(element) {
+        $scope.elements.forEach(function(e) {
+            e.selected = false;
+        });
+
         $scope.selected = element;
         element.selected = true;
     }
