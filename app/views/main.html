@@ -1,36 +1,49 @@
-<div class="header">
-  <ul class="nav nav-pills pull-right">
-    <li class="active"><a ng-href="#">Home</a></li>
-    <li><a ng-href="#">About</a></li>
-    <li><a ng-href="#">Contact</a></li>
-  </ul>
-  <h3 class="text-muted">template_editor</h3>
-</div>
+<header class="tools">
+    <div class="controls type-controls pull-left">
+        <select class="type">
+            <option value="text">Text</option>
+            <option value="media">Media</option>
+            <option value="table">Table</option>
+        </select>
+    </div>
 
-<div class="jumbotron">
-  <h1>'Allo, 'Allo!</h1>
-  <p class="lead">
-    <img src="images/yeoman.png" alt="I'm Yeoman"><br>
-    Always a pleasure scaffolding your apps.
-  </p>
-  <p><a class="btn btn-lg btn-success" ng-href="#">Splendid!</a></p>
-</div>
+    <div class="controls property-controls pull-left">
+        TODO
+    </div>
 
-<div class="row marketing">
-  <h4>HTML5 Boilerplate</h4>
-  <p>
-    HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites.
-  </p>
+    <div class="controls general-controls pull-right">
+        <button class="control">Remove</button>
+        <button class="control">Add New</button>
+    </div>
 
-  <h4>Angular</h4>
-  <p>
-    AngularJS is a toolset for building the framework most suited to your application development.
-  </p>
+    <div class="controls dimension-controls pull-right">
+        <div class="dimension">
+            <label>X</label>
+            <input name="x" />
+        </div>
 
-  <h4>Karma</h4>
-  <p>Spectacular Test Runner for JavaScript.</p>
-</div>
+        <div class="dimension">
+            <label>Y</label>
+            <input name="y" />
+        </div>
 
-<div class="footer">
-  <p>♥ from the Yeoman team</p>
+        <div class="dimension">
+            <label>Z</label>
+            <input name="z" />
+        </div>
+
+        <div class="dimension">
+            <label>W</label>
+            <input name="w" />
+        </div>
+
+        <div class="dimension">
+            <label>H</label>
+            <input name="h" />
+        </div>
+    </div>
+</header>
+
+<div class="workspace">
+workspace
 </div>
