@@ -8,4 +8,13 @@ angular.module('templateEditorApp').controller('MainCtrl', function($scope) {
 
     $scope.fonts = ['Arial', 'Helvetica', 'Times New Roman'];
     $scope.selectedFont = $scope.fonts[0];
+
+    initializeWorkspace();
+
+    function initializeWorkspace() {
+        var workspace = document.getElementById('workspace');
+        var $workspace = angular.element(workspace);
+
+        $workspace.css('height', workspace.clientWidth * 3 / 4 + 'px');
+    }
 });
