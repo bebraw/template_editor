@@ -10,8 +10,8 @@
 
     <div class="controls property-controls pull-left">
         <div class="animate-switch-container" ng-switch on="selected.type">
-            <div class="animate-switch" ng-switch-when="text">
-                <select class="type" ng-model="selectedFont" ng-options="font for font in fonts"></select>
+            <div ng-switch-when="text">
+                <select class="type" ng-model="selected.font" ng-options="font for font in fonts"></select>
 
                 <div class="size">
                     <label>Size</label>
@@ -28,8 +28,8 @@
                     <input name="shadow" type="checkbox" ng-model="selected.shadow" />
                 </div>
             </div>
-            <div class="animate-switch" ng-switch-when="media"></div>
-            <div class="animate-switch" ng-switch-when="table">
+            <div ng-switch-when="media"></div>
+            <div ng-switch-when="table">
                 <div class="rows">
                     <label>Rows</label>
                     <input name="rows" ng-model="selected.rows" />
@@ -77,5 +77,19 @@
 </header>
 
 <div id="workspace">
-    <div class="element" ng-repeat="element in elements" ng-class="{selected: element.selected}" ng-style="{left: element.x * 100 + '%', top: element.x * 100 + '%', width: element.w * 100 + '%', height: element.h * 100 + '%', 'z-index': element.z}">{{ element.type }}</div>
+    <div class="elements" ng-repeat="element in elements" ng-switch on="element.type">
+        <div class="element" ng-switch-when="text" ng-class="{selected: element.selected}" ng-style="{left: element.x * 100 + '%', top: element.y * 100 + '%', width: element.w * 100 + '%', height: element.h * 100 + '%', 'z-index': element.z}">
+            <div ng-style="{'font-family': element.font, 'font-size': element.size, 'text-transform': element.uppercase? 'uppercase': 'none', 'text-shadow': element.shadow? '0.1em 0.1em #333': 'none'}">{{ element.type }}</div>
+        </div>
+        <div class="element" ng-switch-when="media" ng-class="{selected: element.selected}" ng-style="{left: element.x * 100 + '%', top: element.y * 100 + '%', width: element.w * 100 + '%', height: element.h * 100 + '%', 'z-index': element.z}">
+            <img src="images/yeoman.png" />
+        </div>
+        <div class="element" ng-switch-when="table" ng-class="{selected: element.selected}" ng-style="{left: element.x * 100 + '%', top: element.y * 100 + '%', width: element.w * 100 + '%', height: element.h * 100 + '%', 'z-index': element.z}">
+            <table>
+                <tr ng-repeat="row in getNumber(element.rows) track by $index">
+                    <td ng-repeat="column in getNumber(element.columns) track by $index">{{ element.rows }}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
 </div>

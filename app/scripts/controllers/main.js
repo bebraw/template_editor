@@ -6,22 +6,39 @@ angular.module('templateEditorApp').controller('MainCtrl', function($scope) {
 
     $scope.types = ['text', 'media', 'table'];
 
-    $scope.fonts = ['Arial', 'Helvetica', 'Times New Roman'];
-    $scope.selectedFont = $scope.fonts[0];
+    $scope.fonts = ['Arial', 'Monaco', 'Times New Roman'];
 
     $scope.addNew = addNew;
     $scope.remove = remove;
+
+    $scope.getNumber = function(num) {
+        num = parseInt(num, 10);
+
+        if(num) {
+            return new Array(num);
+        }
+
+        return [];
+    };
 
     initializeWorkspace();
 
     function addNew() {
         var element = {
             type: 'text',
+
             x: 0.45,
-            y: 0.45,
+            y: 0.15,
             z: 0,
+
             w: 0.2,
-            h: 0.2
+            h: 0.2,
+
+            font: 'Arial',
+            size: '100%',
+
+            rows: 5,
+            columns: 5
         };
 
         $scope.elements.push(element);
