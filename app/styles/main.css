@@ -30,6 +30,7 @@
 }
 
 .element {
+    outline: 0.1em solid rgba(127, 127, 127, 0.2);
     position: absolute;
 }
 
