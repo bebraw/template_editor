@@ -1,48 +1,36 @@
 'use strict';
 
-// http://blog.parkji.co.uk/2013/08/11/native-drag-and-drop-in-angularjs.html
-angular.module('templateEditorApp').directive('draggable', function () {
+angular.module('templateEditorApp').directive('draggable', function($document) {
     return {
         restrict: 'A',
         link: function(scope, element) {
-            var el = element[0];
+            var startX = 0;
+            var startY = 0;
 
-            el.draggable = true;
+            element.on('mousedown', function(event) {
+                event.preventDefault();
 
-            el.addEventListener(
-                'dragstart',
-                function(e) {
-                    e.dataTransfer.effectAllowed = 'move';
-                    e.dataTransfer.setData('Text', this.id);
+                startX = event.pageX - scope.workspace.w * parseFloat(scope.selected.x);
+                startY = event.pageY - scope.workspace.h * parseFloat(scope.selected.y);
 
-                    this.classList.add('drag');
+                $document.on('mousemove', mousemove);
+                $document.on('mouseup', mouseup);
+            });
 
-                    return false;
-                },
-                false
-            );
+            function mousemove(event) {
+                var x = event.pageX - startX;
+                var y = event.pageY - startY;
 
-            el.addEventListener(
-                'dragend',
-                function(e) {
-                    var w = scope.workspace.w;
-                    var h = scope.workspace.h;
+                scope.selected.x = x / scope.workspace.w;
+                scope.selected.y = y / scope.workspace.h;
 
-                    console.log(h, scope.selected.y, e, e.offsetY);
+                scope.$apply();
+            }
 
-                    scope.selected.x = (w * scope.selected.x + e.offsetX) / w;
-
-                    // XXXXX: figure this out
-                    scope.selected.y = e.offsetY / h;
-
-                    this.classList.remove('drag');
-
-                    scope.$apply();
-
-                    return false;
-                },
-                false
-            );
+            function mouseup() {
+                $document.unbind('mousemove', mousemove);
+                $document.unbind('mouseup', mouseup);
+            }
         }
     };
 });
