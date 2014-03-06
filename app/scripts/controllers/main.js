@@ -1,6 +1,11 @@
 'use strict';
 
 angular.module('templateEditorApp').controller('MainCtrl', function($scope) {
+    $scope.workspace = {
+        w: null,
+        h: null
+    };
+
     $scope.elements = [];
     $scope.selected = {};
 
@@ -67,6 +72,12 @@ angular.module('templateEditorApp').controller('MainCtrl', function($scope) {
         var workspace = document.getElementById('workspace');
         var $workspace = angular.element(workspace);
 
-        $workspace.css('height', workspace.clientWidth * 3 / 4 + 'px');
+        var w = workspace.clientWidth;
+        var h = workspace.clientWidth * 3 / 4;
+
+        $workspace.css('height', h + 'px');
+
+        $scope.workspace.w = w;
+        $scope.workspace.h = h;
     }
 });

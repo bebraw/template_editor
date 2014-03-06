@@ -78,13 +78,13 @@
 
 <div id="workspace">
     <div class="elements" ng-repeat="element in elements" ng-switch on="element.type">
-        <div class="element" ng-switch-when="text" ng-class="{selected: element.selected}" ng-style="{left: element.x * 100 + '%', top: element.y * 100 + '%', width: element.w * 100 + '%', height: element.h * 100 + '%', 'z-index': element.z}">
+        <div draggable class="element" ng-switch-when="text" ng-class="{selected: element.selected}" ng-style="{left: element.x * 100 + '%', top: element.y * 100 + '%', width: element.w * 100 + '%', height: element.h * 100 + '%', 'z-index': element.z}">
             <div ng-style="{'font-family': element.font, 'font-size': element.size, 'text-transform': element.uppercase? 'uppercase': 'none', 'text-shadow': element.shadow? '0.1em 0.1em #333': 'none'}">{{ element.type }}</div>
         </div>
-        <div class="element" ng-switch-when="media" ng-class="{selected: element.selected}" ng-style="{left: element.x * 100 + '%', top: element.y * 100 + '%', width: element.w * 100 + '%', height: element.h * 100 + '%', 'z-index': element.z}">
+        <div draggable class="element" ng-switch-when="media" ng-class="{selected: element.selected}" ng-style="{left: element.x * 100 + '%', top: element.y * 100 + '%', width: element.w * 100 + '%', height: element.h * 100 + '%', 'z-index': element.z}">
             <img src="images/yeoman.png" />
         </div>
-        <div class="element" ng-switch-when="table" ng-class="{selected: element.selected}" ng-style="{left: element.x * 100 + '%', top: element.y * 100 + '%', width: element.w * 100 + '%', height: element.h * 100 + '%', 'z-index': element.z}">
+        <div draggable class="element" ng-switch-when="table" ng-class="{selected: element.selected}" ng-style="{left: element.x * 100 + '%', top: element.y * 100 + '%', width: element.w * 100 + '%', height: element.h * 100 + '%', 'z-index': element.z}">
             <table>
                 <tr ng-repeat="row in getNumber(element.rows) track by $index">
                     <td ng-repeat="column in getNumber(element.columns) track by $index">{{ element.rows }}</td>
