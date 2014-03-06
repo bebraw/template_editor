@@ -39,5 +39,5 @@
 }
 
 .selected.element {
-    border: 0.1em dashed #555;
+    outline: 0.1em dashed #555;
 }
