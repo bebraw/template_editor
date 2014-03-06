@@ -20,8 +20,8 @@
     width: 2em;
 }
 
-.general-controls button {
-    margin-bottom: 0.5em;
-
+.tools select, .tools button {
     width: 10em;
+
+    margin-bottom: 0.5em;
 }

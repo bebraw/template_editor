@@ -1,14 +1,46 @@
 <header class="tools">
     <div class="controls type-controls pull-left">
-        <select class="type">
-            <option value="text">Text</option>
-            <option value="media">Media</option>
-            <option value="table">Table</option>
-        </select>
+        <select class="type" ng-model="selectedType" ng-options="type for type in types"></select>
+
+        <div class="data">
+            <label>Data</label>
+            <input name="data" ng-model="selected.data" />
+        </div>
     </div>
 
     <div class="controls property-controls pull-left">
-        TODO
+        <div class="animate-switch-container" ng-switch on="selectedType">
+            <div class="animate-switch" ng-switch-when="text">
+                <select class="type" ng-model="selectedFont" ng-options="font for font in fonts"></select>
+
+                <div class="size">
+                    <label>Size</label>
+                    <input name="size" ng-model="selected.size" />
+                </div>
+
+                <div class="uppercase">
+                    <label>Uppercase</label>
+                    <input name="uppercase" type="checkbox" ng-model="selected.uppercase" />
+                </div>
+
+                <div class="shadow">
+                    <label>Shadow</label>
+                    <input name="shadow" type="checkbox" ng-model="selected.shadow" />
+                </div>
+            </div>
+            <div class="animate-switch" ng-switch-when="media"></div>
+            <div class="animate-switch" ng-switch-when="table">
+                <div class="rows">
+                    <label>Rows</label>
+                    <input name="rows" ng-model="selected.rows" />
+                </div>
+
+                <div class="columns">
+                    <label>Columns</label>
+                    <input name="columns" ng-model="selected.columns" />
+                </div>
+            </div>
+        </div>
     </div>
 
     <div class="controls general-controls pull-right">
