@@ -30,7 +30,15 @@ angular.module('templateEditorApp').controller('MainCtrl', function($scope) {
     }
 
     function remove() {
-        console.log('should remove selected element');
+        for(var i = 0, len = $scope.elements.length; i < len; i++) {
+            if($scope.selected === $scope.elements[i]) {
+                $scope.elements.splice(i, 1);
+
+                break;
+            }
+        }
+
+        delete $scope.selected;
     }
 
     function select(element) {
