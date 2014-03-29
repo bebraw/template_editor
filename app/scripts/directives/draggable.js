@@ -10,6 +10,10 @@ angular.module('templateEditorApp').directive('draggable', function($document) {
             element.on('mousedown', function(event) {
                 event.preventDefault();
 
+                if(!element.hasClass('selected')) {
+                    return;
+                }
+
                 startX = event.pageX - scope.workspace.w * parseFloat(scope.selected.x);
                 startY = event.pageY - scope.workspace.h * parseFloat(scope.selected.y);
 
